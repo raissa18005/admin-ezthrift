@@ -51,7 +51,36 @@ const PenjualanCard = ({ item }) => {
     return (
         <div className="verifCard">
             <div className="username">{username}</div>
+            <div className="address">
+                <div className="address-wrapper">
+                    <div className="address-label">Nama Lengkap</div>
+                    <div>: </div>
+                    <div className="address-item">{item.nama}</div>
+                </div>
+                <div className="address-wrapper">
+                    <div className="address-label">Alamat</div>
+                    <div>: </div>
+                    <div className="address-item">{item.address.alamat}</div>
+                </div>
+                <div className="address-wrapper">
+                    <div className="address-label">Provinsi</div>
+                    <div>: </div>
+                    <div className="address-item">{item.address.provinsi}</div>
+                </div>
+                <div className="address-wrapper">
+                    <div className="address-label">Kota</div>
+                    <div>: </div>
+                    <div className="address-item">{item.address.kota}</div>
+                </div>
+                <div className="address-wrapper">
+                    <div className="address-label">Telp</div>
+                    <div>:</div>
+                    <div className="address-item">{item.notelp}</div>
+                </div>
+            </div>
+
             <div className="products">
+                <div className="username">ORDER</div>
                 {product.map((product) => (
                     <div className="productContainer" key={product._id}>
                         <div className="productTitle">{product.title} </div>

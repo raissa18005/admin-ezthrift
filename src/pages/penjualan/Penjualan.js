@@ -29,7 +29,6 @@ export default function Penjualan() {
     // }, []);
 
     const penjualanOrders = orders.filter((p) => status.includes(p.status));
-
     useEffect(() => {
         const getAllOrders = async () => {
             try {

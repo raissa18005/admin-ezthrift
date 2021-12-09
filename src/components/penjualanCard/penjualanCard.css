@@ -77,3 +77,25 @@
     font-weight: 600;
     
 }
+
+
+
+.address{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    margin: 5px 0;
+}
+
+.address-wrapper{
+    display: flex;
+    margin: 2px 0;
+}
+
+.address-item{
+    flex: 4;
+    margin: 0 5px;
+}
+.address-label{
+    flex: 1;
+}

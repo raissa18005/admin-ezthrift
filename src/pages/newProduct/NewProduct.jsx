@@ -8,13 +8,16 @@ import {
 } from "firebase/storage";
 import app from "../../firebase";
 import { addProduct } from "../../redux/apiCalls";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast, Zoom, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function NewProduct() {
     const [inputs, setInputs] = useState({});
     const [file, setFile] = useState(null);
     const [cat, setCat] = useState([]);
     const dispatch = useDispatch();
+    const { isFetching } = useSelector((state) => state.product);
 
     const handleChange = (e) => {
         setInputs((prev) => {
@@ -66,7 +69,7 @@ export default function NewProduct() {
                         img: downloadURL,
                         categories: cat,
                     };
-                    addProduct(product, dispatch);
+                    addProduct(product, dispatch, toast);
                 });
             }
         );
@@ -170,12 +173,14 @@ export default function NewProduct() {
                         <button
                             onClick={handleClick}
                             className="addProductButton"
+                            disabled={isFetching}
                         >
                             Create
                         </button>
                     </form>
                 </div>
             </div>
+            <ToastContainer position="bottom-center" />
         </div>
     );
 }

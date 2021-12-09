@@ -21,6 +21,7 @@ export const login = async (dispatch, user, history) => {
         const res = await publicRequest.post("/auth/login", user);
         history.push("/home");
         dispatch(loginSuccess(res.data));
+        window.location.reload();
     } catch (err) {
         dispatch(loginFailure());
     }
@@ -56,12 +57,17 @@ export const updateProduct = async (id, product, dispatch) => {
         dispatch(updateProductFailure());
     }
 };
-export const addProduct = async (product, dispatch) => {
+export const addProduct = async (product, dispatch, toast) => {
     dispatch(addProductStart());
     try {
         const res = await userRequest.post(`/products`, product);
         dispatch(addProductSuccess(res.data));
+        toast.success("Produk Berhasil Dibuat");
     } catch (err) {
         dispatch(addProductFailure());
+        console.log(err);
+        if (err) {
+            toast.error("Produk Gagal Dibuat");
+        }
     }
 };
